@@ -1,0 +1,25 @@
+synax = "proto3"
+// 指定生成包的名称为programmer.pb.go，防止命名冲突
+package proto;
+
+// service 定义开放调用的服务
+service ProgrammerService {
+    rpc GetProgrammerInfo (Request) returns (Response) {
+
+    }
+}
+
+// message 对应生成代码的struct， 用于定义客户端请求的数据格式
+message Request {
+    // [修饰符] 类型 字段名 = 标识符；
+    string name = 1;
+}
+
+// 定义服务器端响应的数据格式
+message Response {
+    int32 uid = 1;
+    string username = 2;
+    string job = 3;
+    // repeated 修饰符表示字段是可变数组，即slice类型
+    repeated string goodAt = 4;
+}
